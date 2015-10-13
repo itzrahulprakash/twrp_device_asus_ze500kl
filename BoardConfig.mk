@@ -36,28 +36,32 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01f88000
 
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk
 
+#adb fix (?)
+BOARD_FUNCTIONFS_HAS_SS_COUNT := true
+
 #change this to "twrp" to make a TWRP recovery, or any other recovery which might be released
 RECOVERY_VARIANT := CWM
 
 # TWRP
-ifeq ($(RECOVERY_VARIANT),twrp)
-	TARGET_RECOVERY_FSTAB := device/asus/zenfone2/twrp.fstab
-else
-	TARGET_RECOVERY_FSTAB := device/asus/zenfone2/recovery.fstab
-endif
-
-TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
-TW_INCLUDE_CRYPTO := true
-TW_NTFS_WA := true
-RECOVERY_SDCARD_ON_DATA := true
-RECOVERY_GRAPHICS_USE_LINELENGTH := true
-TW_FLASH_FROM_STORAGE := true
-TW_INTERNAL_STORAGE_PATH := "/sdcard"
-TW_INTERNAL_STORAGE_MOUNT_POINT := "sdcard"
-TW_EXTERNAL_STORAGE_PATH := "/external_sd"
-TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
-TW_NO_SCREEN_BLANK := true
-TW_NO_SCREEN_TIMEOUT := true
-TW_EXCLUDE_SUPERSU := true
-TWRP_EVENT_LOGGING := false
+#ifeq ($(RECOVERY_VARIANT),twrp)
+#	TARGET_RECOVERY_FSTAB := device/asus/zenfone2/twrp.fstab
+#else
+#	TARGET_RECOVERY_FSTAB := device/asus/zenfone2/recovery.fstab
+#endif
+#
+#TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
+#TW_INCLUDE_CRYPTO := true
+#TW_NTFS_WA := true
+#RECOVERY_SDCARD_ON_DATA := true
+#RECOVERY_GRAPHICS_USE_LINELENGTH := true
+#TW_FLASH_FROM_STORAGE := true
+#TW_INTERNAL_STORAGE_PATH := "/sdcard"
+#TW_INTERNAL_STORAGE_MOUNT_POINT := "sdcard"
+#TW_EXTERNAL_STORAGE_PATH := "/external_sd"
+#TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
+#TW_NO_SCREEN_BLANK := true
+#TW_NO_SCREEN_TIMEOUT := true
+#TW_EXCLUDE_SUPERSU := true
+#TWRP_EVENT_LOGGING := false
+#TW_NO_USB_STORAGE := true
 TW_NO_USB_STORAGE := true
