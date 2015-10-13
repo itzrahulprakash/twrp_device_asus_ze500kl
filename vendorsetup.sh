@@ -1,1 +1,1 @@
-add_lunch_combo asus_ze500kl-eng
+add_lunch_combo asus_ze500kl-userdebug
