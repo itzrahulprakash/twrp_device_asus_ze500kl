@@ -24,10 +24,9 @@ TARGET_BOOTLOADER_IS_2ND := true
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 BOARD_FUNCTIONFS_HAS_SS_COUNT := true
 
-TARGET_KERNEL_CONFIG := msm8916_sec_defconfig
-TARGET_KERNEL_SOURCE := kernel/asus/ze500kl
+TARGET_PREBUILT_KERNEL := device/asus/ze500kl/kernel
 BOARD_KERNEL_IMAGE_NAME := bzImage
-
+TARGET_NO_BOOTLOADER := true
 BOARD_FLASH_BLOCK_SIZE := 2048
 
 BOARD_KERNEL_BASE := 0x80078000
@@ -44,9 +43,9 @@ RECOVERY_VARIANT := twrp
 
 # TWRP
 ifeq ($(RECOVERY_VARIANT),twrp)
-	TARGET_RECOVERY_FSTAB := device/asus/zenfone2/twrp.fstab
+	TARGET_RECOVERY_FSTAB := device/asus/ze500kl/twrp.fstab
 else
-	TARGET_RECOVERY_FSTAB := device/asus/zenfone2/recovery.fstab
+	TARGET_RECOVERY_FSTAB := device/asus/ze500kl/recovery.fstab
 endif
 
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
