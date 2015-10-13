@@ -1,9 +1,15 @@
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+# Release name
+PRODUCT_RELEASE_NAME := ze500kl
 
-# The gps config appropriate for this device
-$(call inherit-product, device/common/gps/gps_us_supl.mk)
+# Inherit device configuration
+$(call inherit-product, device/asus/ze500kl/omni_ze500kl.mk)
 
-$(call inherit-product-if-exists, vendor/asus/ze500kl/ze500kl-vendor.mk)
+## Device identifier. This must come after all inclusions
+PRODUCT_DEVICE := ze500kl
+PRODUCT_NAME := cm_ze500kl
+PRODUCT_BRAND := asus
+PRODUCT_MODEL := ze500kl
+PRODUCT_MANUFACTURER := asus
 
 DEVICE_PACKAGE_OVERLAYS += device/asus/ze500kl/overlay
 
@@ -16,9 +22,3 @@ endif
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
-
-$(call inherit-product, build/target/product/full.mk)
-
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := full_ze500kl
-PRODUCT_DEVICE := ze500kl
