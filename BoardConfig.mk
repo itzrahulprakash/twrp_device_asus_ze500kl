@@ -1,31 +1,63 @@
-USE_CAMERA_STUB := true
+# Data from https://github.com/TeamWin/android_device_samsung_serranoveltexx/blob/android-4.4/BoardConfig.mk
 
-# inherit from the proprietary version
--include vendor/asus/ze500kl/BoardConfigVendor.mk
+TARGET_BOARD_PLATFORM := msm8916
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno306
+TARGET_BOOTLOADER_BOARD_NAME := MSM8916
 
 TARGET_ARCH := arm
-TARGET_NO_BOOTLOADER := true
-TARGET_BOARD_PLATFORM := unknown
+TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
-TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_CPU_VARIANT := cortex-a7
 TARGET_CPU_SMP := true
+TARGET_CPU_VARIANT := cortex-a7
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
-TARGET_BOOTLOADER_BOARD_NAME := ze500kl
+DEVICE_RESOLUTION := 720x1280
 
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk
+# Data from https://github.com/TheSSJ/device_asus_zenfone2/blob/master/BoardConfig.mk
+HAVE_SELINUX := true
+ANDROID_COMMON_BUILD_MK := true
+TARGET_USERIMAGES_USE_EXT4 := true
+BOARD_HAS_LARGE_FILESYSTEM := true
+USE_OPENGL_RENDERER := true
+TARGET_BOOTLOADER_IS_2ND := true 
+COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
+BOARD_FUNCTIONFS_HAS_SS_COUNT := true
+
+TARGET_KERNEL_CONFIG := msm8916_sec_defconfig
+TARGET_KERNEL_SOURCE := kernel/asus/ze500kl
+BOARD_KERNEL_IMAGE_NAME := bzImage
+
+BOARD_FLASH_BLOCK_SIZE := 2048
+
 BOARD_KERNEL_BASE := 0x80078000
 BOARD_KERNEL_PAGESIZE := 2048
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01f88000
 
-# fix this up by examining /proc/mtd on a running device
-BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00380000
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00480000
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x08c60000
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x105c0000
-BOARD_FLASH_BLOCK_SIZE := 131072
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk
 
-TARGET_PREBUILT_KERNEL := device/asus/ze500kl/kernel
+#change this to "twrp" to make a TWRP recovery, or any other recovery which might be released
+RECOVERY_VARIANT := CWM
 
-BOARD_HAS_NO_SELECT_BUTTON := true
+# TWRP
+ifeq ($(RECOVERY_VARIANT),twrp)
+	TARGET_RECOVERY_FSTAB := device/asus/zenfone2/twrp.fstab
+else
+	TARGET_RECOVERY_FSTAB := device/asus/zenfone2/recovery.fstab
+endif
+
+TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
+TW_INCLUDE_CRYPTO := true
+TW_NTFS_WA := true
+RECOVERY_SDCARD_ON_DATA := true
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TW_FLASH_FROM_STORAGE := true
+TW_INTERNAL_STORAGE_PATH := "/sdcard"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "sdcard"
+TW_EXTERNAL_STORAGE_PATH := "/external_sd"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
+TW_NO_SCREEN_BLANK := true
+TW_NO_SCREEN_TIMEOUT := true
+TW_EXCLUDE_SUPERSU := true
+TWRP_EVENT_LOGGING := false
+TW_NO_USB_STORAGE := true
