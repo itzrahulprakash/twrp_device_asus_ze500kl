@@ -1,4 +1,4 @@
-# Data from https://github.com/TeamWin/android_device_samsung_serranoveltexx/blob/android-4.4/BoardConfig.mk
+
 
 TARGET_BOARD_PLATFORM := msm8916
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno306
@@ -24,7 +24,7 @@ TARGET_BOOTLOADER_IS_2ND := true
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 BOARD_FUNCTIONFS_HAS_SS_COUNT := true
 
-TARGET_PREBUILT_KERNEL := device/asus/ze500kl/kernel
+TARGET_PREBUILT_KERNEL := device/asus/ze550kl/kernel
 BOARD_KERNEL_IMAGE_NAME := bzImage
 TARGET_NO_BOOTLOADER := true
 BOARD_FLASH_BLOCK_SIZE := 2048
@@ -43,9 +43,9 @@ RECOVERY_VARIANT := twrp
 
 # TWRP
 ifeq ($(RECOVERY_VARIANT),twrp)
-	TARGET_RECOVERY_FSTAB := device/asus/ze500kl/twrp.fstab
+	TARGET_RECOVERY_FSTAB := device/asus/ze550kl/twrp.fstab
 else
-	TARGET_RECOVERY_FSTAB := device/asus/ze500kl/recovery.fstab
+	TARGET_RECOVERY_FSTAB := device/asus/ze550kl/recovery.fstab
 endif
 
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
