@@ -1,7 +1,7 @@
 USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
--include vendor/asus/ze500kl/BoardConfigVendor.mk
+-include vendor/asus/ze550kl/BoardConfigVendor.mk
 
 TARGET_ARCH := arm
 TARGET_NO_BOOTLOADER := true
@@ -13,7 +13,7 @@ TARGET_CPU_VARIANT := cortex-a7
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
-TARGET_BOOTLOADER_BOARD_NAME := ze500kl
+TARGET_BOOTLOADER_BOARD_NAME := ze550kl
 
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk
 BOARD_KERNEL_BASE := 0x80078000
@@ -26,6 +26,6 @@ BOARD_KERNEL_PAGESIZE := 2048
 #BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x105c0000
 #BOARD_FLASH_BLOCK_SIZE := 131072
 
-TARGET_PREBUILT_KERNEL := device/asus/ze500kl/kernel
+TARGET_PREBUILT_KERNEL := device/asus/ze550kl/kernel
 
 BOARD_HAS_NO_SELECT_BUTTON := true
